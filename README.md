@@ -1,4 +1,4 @@
-# XRPL Naming Service
+### XRPL Naming Service
 
 The XRPL Naming Service is a web application that allows users to resolve and manage XRPL domain names. It provides a user-friendly interface for searching and registering .xrpl domains on the XRPL (XRP Ledger).
 
