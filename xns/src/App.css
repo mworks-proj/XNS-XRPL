@@ -1,9 +1,9 @@
 
 .container {
   max-width: 600px;
-  margin: 0 auto;
   position: relative;
   top: 200px;
+  margin: 0 auto;
   padding: 20px;
   /*border: 3px solid red;*/
 }
@@ -12,13 +12,25 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
   margin-bottom: 40px;
   /*border-bottom: 3px solid red;*/
 }
+/* Menu Styling */
+
+
+
+/* Menu END*/
 
 .logo-container {
   display: flex;
   align-items: center;
+  position: relative;
+  justify-content: center;
   
 }
 
@@ -26,6 +38,7 @@
   height: 230px;
   margin-right: 10px;
 }
+
 
 .search-container {
   text-align: center;
