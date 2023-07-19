@@ -6,31 +6,6 @@ import logo from './xrpl.png';
 const App = () => {
   const [name, setName] = useState('');
   const [resolvedName] = useState('');
-  const [typingIndex, setTypingIndex] = useState(0);
-  
-  const placeholderTexts = [
-    "Get your .xrpl now before it's too late.",
-    "XRPL Awaits You: Claim Your .xrpl Domain and Be at the Forefront of Innovation!"
-  ];
-  
-  const placeholderDelay = 100; // Delay between each character being shown in milliseconds
-
-  useEffect(() => {
-    let timeoutId = null;
-
-    if (name === '') {
-      timeoutId = setTimeout(() => {
-        setTypingIndex((prevIndex) => prevIndex + 1);
-      }, placeholderDelay);
-    } else {
-      setTypingIndex(0);
-    }
-
-    return () => {
-      clearTimeout(timeoutId);
-    };
-  }, [name, placeholderDelay]);
-
   const [registeredTLDs, setRegisteredTLDs] = useState([]);
   const [filteredTLDs, setFilteredTLDs] = useState([]);
 
@@ -78,7 +53,7 @@ const App = () => {
             <input
               type="text"
               className="form-control"
-              placeholder={placeholderTexts[0]}
+              placeholder=""
               value={name}
               onChange={handleInputChange}
             />
