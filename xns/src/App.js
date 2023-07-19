@@ -3,6 +3,8 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import logo from './xrpl.png';
 
+import TypewriterSearchBar from './components/searchbar/typewriterSearchBar';
+
 const App = () => {
   const [name, setName] = useState('');
   const [resolvedName] = useState('');
@@ -50,13 +52,7 @@ const App = () => {
         <div className="search-container">
           <h1 className="title">XRPL Naming Service</h1>
           <div className="search-bar">
-            <input
-              type="text"
-              className="form-control"
-              placeholder=""
-              value={name}
-              onChange={handleInputChange}
-            />
+           <TypewriterSearchBar />
             <div className="search-button-container">
               <button className="btn btn-primary" onClick={handleSearch}>
                 Search
