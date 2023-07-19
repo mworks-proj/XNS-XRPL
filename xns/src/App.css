@@ -21,7 +21,41 @@
   /*border-bottom: 3px solid red;*/
 }
 /* Menu Styling */
+.menu {
+  background-color: #f8f9fa;
+  padding: 10px;
+  width: 100%;
+  border: 1px solid red;
+}
 
+.menu ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.menu ul li {
+  margin-right: 20px;
+}
+
+.menu ul li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  transition: color 0.3s ease-in-out;
+}
+
+.menu ul li a:hover {
+  color: #007bff;
+}
+
+.container {
+  margin-top: 20px; /* Adjust this value based on your header height */
+  flex-direction: column;
+  align-items: stretch;
+}
 
 
 /* Menu END*/
@@ -86,3 +120,8 @@
 }
 
 /* Add the rest of your CSS styles for the form-group and resolved-name as needed */
+
+
+
+/* Modules */
+

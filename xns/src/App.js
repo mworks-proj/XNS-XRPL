@@ -3,6 +3,8 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import logo from './xrpl.png';
 
+
+
 const getAnimatedPlaceholder = (placeholderTexts, typingIndex, name) => {
   const totalPhrases = placeholderTexts.length;
   const currentIndex = Math.floor(typingIndex / totalPhrases) % (totalPhrases * 2);
@@ -21,6 +23,9 @@ const App = () => {
   const [name, setName] = useState('');
   const [resolvedName, setResolvedName] = useState('');
   const [typingIndex, setTypingIndex] = useState(0);
+
+
+  
 
   const placeholderTexts = [
     "Seize the Opportunity: Claim Your .xrpl Domain now!    ",
@@ -61,11 +66,19 @@ const App = () => {
   return (
     <div className="container">
       <header className="header">
-        <div className="logo-container">
-          <img src={logo} alt="Logo" className="logo" />
-        </div>
+      <nav className="menu">
+          <ul>
+            <li><a href="app.js">Registry</a></li>
+            <li><a href="#">Governance</a></li>
+            <li><a href="#">About</a></li>
+          </ul>
+        </nav>
+        
       </header>
       <main>
+      <div className="logo-container">
+          <img src={logo} alt="Logo" className="logo" />
+        </div>
         <div className="search-container">
           <h1 className="title">XRPL Naming Service</h1>
           <div className="search-bar">
