@@ -3,42 +3,17 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import logo from './xrpl.png';
 
-
-
-const getAnimatedPlaceholder = (placeholderTexts, typingIndex, name) => {
-  const totalPhrases = placeholderTexts.length;
-  const currentIndex = Math.floor(typingIndex / totalPhrases) % (totalPhrases * 2);
-  const currentPhraseIndex = currentIndex % totalPhrases;
-  const currentPhrase = placeholderTexts[currentPhraseIndex];
-  const currentText = currentPhrase.substring(0, typingIndex % currentPhrase.length);
-
-  return `${currentText}${name !== '' ? name.substring(typingIndex) : ''}`;
-};
-
-
-
-
-
 const App = () => {
   const [name, setName] = useState('');
-  const [resolvedName, setResolvedName] = useState('');
+  const [resolvedName] = useState('');
   const [typingIndex, setTypingIndex] = useState(0);
-
-
   
-
   const placeholderTexts = [
-    "Seize the Opportunity: Claim Your .xrpl Domain now!    ",
-
-    
+    "Get your .xrpl now before it's too late.",
+    "XRPL Awaits You: Claim Your .xrpl Domain and Be at the Forefront of Innovation!"
   ];
+  
   const placeholderDelay = 100; // Delay between each character being shown in milliseconds
-
-  useEffect(() => {
-    if (name === '') {
-      setTypingIndex(0);
-    }
-  }, [name]);
 
   useEffect(() => {
     let timeoutId = null;
@@ -47,36 +22,54 @@ const App = () => {
       timeoutId = setTimeout(() => {
         setTypingIndex((prevIndex) => prevIndex + 1);
       }, placeholderDelay);
+    } else {
+      setTypingIndex(0);
     }
 
     return () => {
       clearTimeout(timeoutId);
     };
-  }, [name, typingIndex]);
+  }, [name, placeholderDelay]);
 
-  const resolveName = async () => {
-    // Implement the logic to resolve the name here
-    // Update the 'resolvedName' state with the resolved name
+  const [registeredTLDs, setRegisteredTLDs] = useState([]);
+  const [filteredTLDs, setFilteredTLDs] = useState([]);
+
+  const handleSearch = () => {
+    // Simulated logic to fetch registered TLDs based on user input
+    // Replace with your own logic to retrieve TLDs from the backend or external source
+    const simulatedRegisteredTLDs = [
+      'logistics.xrpl',
+      'test.xrpl',
+      'WoJ4ke.xrpl',
+      'EverNode.xrpl',
+      'Gem.xrpl'
+    ];
+
+    setRegisteredTLDs(simulatedRegisteredTLDs);
   };
 
-  const handleChange = (e) => {
-    setName(e.target.value);
+  const handleInputChange = (e) => {
+    const inputValue = e.target.value;
+    setName(inputValue);
+
+    // Filter registered TLDs based on user input
+    const filteredTLDs = registeredTLDs.filter((tld) => tld.includes(inputValue));
+    setFilteredTLDs(filteredTLDs);
   };
 
   return (
     <div className="container">
       <header className="header">
-      <nav className="menu">
+        <nav className="menu">
           <ul>
             <li><a href="app.js">Registry</a></li>
-            <li><a href="#">Governance</a></li>
-            <li><a href="#">About</a></li>
+            <li><a href="app.js">Governance</a></li>
+            <li><a href="app.js">About</a></li>
           </ul>
         </nav>
-        
       </header>
       <main>
-      <div className="logo-container">
+        <div className="logo-container">
           <img src={logo} alt="Logo" className="logo" />
         </div>
         <div className="search-container">
@@ -85,18 +78,31 @@ const App = () => {
             <input
               type="text"
               className="form-control"
-              placeholder={getAnimatedPlaceholder(placeholderTexts, typingIndex, name)}
+              placeholder={placeholderTexts[0]}
               value={name}
-              onChange={handleChange}
+              onChange={handleInputChange}
             />
-            <button className="btn btn-primary" onClick={resolveName}>
-              Search
-            </button>
+            <div className="search-button-container">
+              <button className="btn btn-primary" onClick={handleSearch}>
+                Search
+              </button>
+            </div>
           </div>
           <div className="resolved-name">
             {resolvedName && <p>Resolved Name: {resolvedName}</p>}
           </div>
         </div>
+
+        {filteredTLDs.length > 0 && (
+          <div className="tld-results">
+            <h2>Registered TLDs</h2>
+            <ul>
+              {filteredTLDs.map((tld) => (
+                <li key={tld}>{tld}</li>
+              ))}
+            </ul>
+          </div>
+        )}
       </main>
     </div>
   );

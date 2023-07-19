@@ -25,7 +25,7 @@
   background-color: #f8f9fa;
   padding: 10px;
   width: 100%;
-  border: 1px solid red;
+  /*border: 1px solid red;*/
 }
 
 .menu ul {
@@ -99,7 +99,7 @@
   /*border: 1px solid purple;*/
   /*box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);*/
   outline: none;
-  animation: placeholderAnimation 1s infinite;
+ 
 }
 
 @keyframes placeholderAnimation {
@@ -121,7 +121,61 @@
 
 /* Add the rest of your CSS styles for the form-group and resolved-name as needed */
 
+/* Resolved Name */
+.resolved-name {
+  margin-bottom: 20px;
+}
+
+/* Registered TLDs */
+.tld-results h2 {
+  margin-bottom: 10px;
+}
+
+.tld-results ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.tld-results li {
+  margin-bottom: 5px;
+}
+
+/* Search Bar Animation */
+@keyframes placeholder-animation {
+  0% {
+    width: 0;
+    opacity: 0;
+  }
+  50% {
+    width: 100%;
+    opacity: 1;
+  }
+  100% {
+    width: 100%;
+    opacity: 1;
+  }
+}
+
+.form-control::placeholder {
+  opacity: 0;
+  animation: placeholder-animation 3s infinite;
+}
+
+@keyframes placeholder-animation {
+  0% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
 
 
-/* Modules */
-
+/* ...existing styles... */
