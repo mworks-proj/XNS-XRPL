@@ -20,16 +20,14 @@ const DomainSearch = () => {
         data: {
           query: searchTerm, // Use the domain name entered by the user for the search
           search_type: ['available', 'registered'],
-          tlds: ['com', 'net'],
+          tlds: ['.xrpl','com', 'net'],
           idn: true,
           page_size: 25,
           algorithm: 'full',
           score: {
-            com: 1,
-            net: 0.9,
-            org: 0.8,
-            pl: 0.7,
-            bg: 0.8,
+            xrpl: 1,
+            com: 0.9,
+            
           },
           language: 'en', // Set the language to 'en'
         },
