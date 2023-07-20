@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 const DomainSearch = () => {
-  const [filteredTLDs, setFilteredTLDs] = useState([]);
+  const [filteredDomains, setFilteredDomains] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
@@ -30,25 +30,27 @@ const DomainSearch = () => {
             pl: 0.7,
             bg: 0.8
           },
-          language: 'en' // Update the language option to 'en'
+          language: 'en'
         }
       };
 
-      const response = await axios.request(options);
+      const response = await axios(options);
 
-      const { results } = response.data;
-      if (Array.isArray(results) && results.length > 0) {
-        // Extract the domain names from the API response data
-        const domainNames = results.map((item) => item.domain);
-        setFilteredTLDs(domainNames); // Update filteredTLDs with the domain names
+      const { result } = response.data;
+      const availableDomains = Object.entries(result)
+        .filter(([_, domainInfo]) => domainInfo.status === 'available')
+        .map(([domain, domainInfo]) => domain);
+
+      if (availableDomains.length > 0) {
+        setFilteredDomains(availableDomains);
         setErrorMessage('');
       } else {
-        setFilteredTLDs([]);
-        setErrorMessage('No domain names found.');
+        setFilteredDomains([]);
+        setErrorMessage('No available domains found.');
       }
     } catch (error) {
       console.error('Error fetching data:', error);
-      setFilteredTLDs([]);
+      setFilteredDomains([]);
       setErrorMessage('Error fetching data. Please try again later.');
     }
   };
@@ -75,12 +77,12 @@ const DomainSearch = () => {
       {errorMessage ? (
         <div className="error-message">{errorMessage}</div>
       ) : (
-        filteredTLDs.length > 0 && (
+        filteredDomains.length > 0 && (
           <div className="tld-results">
-            <h2>Domain Names</h2>
+            <h2>Available Domain Names</h2>
             <ul>
-              {filteredTLDs.map((domainName) => (
-                <li key={domainName}>{domainName}</li>
+              {filteredDomains.map((domain) => (
+                <li key={domain}>{domain}</li>
               ))}
             </ul>
           </div>
