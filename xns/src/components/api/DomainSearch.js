@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import './DomainSearch.css'; // Import the CSS file for styling
 
 const DomainSearch = () => {
   const [filteredTLDs, setFilteredTLDs] = useState([]);
@@ -14,7 +15,7 @@ const DomainSearch = () => {
         headers: {
           'content-type': 'application/json',
           'X-RapidAPI-Key': '631fb252b0msh8f0bbecc4c8cf7ep11c039jsn4d1489194a87',
-          'X-RapidAPI-Host': 'domain-suggestion-engine.p.rapidapi.com'
+          'X-RapidAPI-Host': 'domain-suggestion-engine.p.rapidapi.com',
         },
         data: {
           query: searchTerm, // Use the domain name entered by the user for the search
@@ -28,19 +29,22 @@ const DomainSearch = () => {
             net: 0.9,
             org: 0.8,
             pl: 0.7,
-            bg: 0.8
+            bg: 0.8,
           },
-          language: 'en'
-        }
+          language: 'en', // Set the language to 'en'
+        },
       };
 
       const response = await axios(options);
+      const data = response.data.result;
 
-      const data = response.data;
-      if (data && data.status && data.result) {
-        // Extract the domain names from the API response data
-        const domainNames = Object.keys(data.result);
-        setFilteredTLDs(domainNames); // Update filteredTLDs with the domain names
+      if (data && Object.keys(data).length > 0) {
+        // Extract the domain names and status from the API response data
+        const domainData = Object.keys(data).map((key) => ({
+          domain: key,
+          status: data[key].status,
+        }));
+        setFilteredTLDs(domainData); // Update filteredTLDs with the domain data
         setErrorMessage('');
       } else {
         setFilteredTLDs([]);
@@ -76,13 +80,24 @@ const DomainSearch = () => {
         <div className="error-message">{errorMessage}</div>
       ) : (
         filteredTLDs.length > 0 && (
-          <div className="tld-results">
+          <div className="table-container">
             <h2>Domain Names</h2>
-            <ul>
-              {filteredTLDs.map((domainName) => (
-                <li key={domainName}>{domainName}</li>
-              ))}
-            </ul>
+            <table className="domain-table">
+              <thead>
+                <tr>
+                  <th>Domain</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                {filteredTLDs.map((domain) => (
+                  <tr key={domain.domain}>
+                    <td>{domain.domain}</td>
+                    <td>{domain.status}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         )
       )}
