@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import logo from './xrpl.png';
@@ -6,8 +6,6 @@ import logo from './xrpl.png';
 import TypewriterSearchBar from './components/searchbar/typewriterSearchBar';
 
 const App = () => {
-  const [name, setName] = useState('');
-  const [resolvedName] = useState('');
   const [registeredTLDs, setRegisteredTLDs] = useState([]);
   const [filteredTLDs, setFilteredTLDs] = useState([]);
 
@@ -21,13 +19,14 @@ const App = () => {
       'EverNode.xrpl',
       'Gem.xrpl'
     ];
-
+  
     setRegisteredTLDs(simulatedRegisteredTLDs);
+    setFilteredTLDs(simulatedRegisteredTLDs); // Update filteredTLDs with the registered TLDs
   };
+  
 
   const handleInputChange = (e) => {
     const inputValue = e.target.value;
-    setName(inputValue);
 
     // Filter registered TLDs based on user input
     const filteredTLDs = registeredTLDs.filter((tld) => tld.includes(inputValue));
@@ -39,9 +38,10 @@ const App = () => {
       <header className="header">
         <nav className="menu">
           <ul>
-            <li><a href="app.js">Registry</a></li>
-            <li><a href="app.js">Governance</a></li>
-            <li><a href="app.js">About</a></li>
+            <li><a href="/">Register</a></li>
+            <li><a href="/">Governance</a></li>
+            <li><a href="/">About</a></li>
+            {/* Add other navigation links here */}
           </ul>
         </nav>
       </header>
@@ -52,16 +52,10 @@ const App = () => {
         <div className="search-container">
           <h1 className="title">XRPL Naming Service</h1>
           <div className="search-bar">
-           <TypewriterSearchBar />
-            <div className="search-button-container">
-              <button className="btn btn-primary" onClick={handleSearch}>
-                Search
-              </button>
-            </div>
+            {/* Pass the handleSearch function as a prop to TypewriterSearchBar */}
+            <TypewriterSearchBar onSearch={handleSearch} />
           </div>
-          <div className="resolved-name">
-            {resolvedName && <p>Resolved Name: {resolvedName}</p>}
-          </div>
+          {/* Removed the resolvedName div as it was not being used */}
         </div>
 
         {filteredTLDs.length > 0 && (
