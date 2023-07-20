@@ -30,7 +30,7 @@ const DomainSearch = () => {
             pl: 0.7,
             bg: 0.8
           },
-          language: 'fr'
+          language: 'en'
         }
       };
 
