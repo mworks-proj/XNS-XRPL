@@ -1,11 +1,10 @@
-
+/* Default styles for all screen sizes */
 .container {
   max-width: 600px;
   position: relative;
   top: 100px;
   margin: 0 auto;
   padding: 20px;
-  /*border: 3px solid red;*/
 }
 
 .header {
@@ -18,14 +17,12 @@
   right: 0;
   z-index: 100;
   margin-bottom: 40px;
-  /*border-bottom: 3px solid red;*/
 }
-/* Menu Styling */
+
 .menu {
   background-color: #f8f9fa;
   padding: 10px;
   width: 100%;
-  /*border: 1px solid red;*/
 }
 
 .menu ul {
@@ -51,22 +48,11 @@
   color: #007bff;
 }
 
-.container {
-  margin-top: 20px; /* Adjust this value based on your header height */
-  flex-direction: column;
-  /*border: 1px solid red;*/
-}
-
-
-
-/* Menu END*/
-
 .logo-container {
   display: flex;
   align-items: center;
   position: relative;
   justify-content: center;
-  
 }
 
 .logo {
@@ -74,29 +60,26 @@
   width: auto;
   margin: 10px;
   padding: 20px;
-  /*border: 1px solid pink;*/
 }
-
 
 .search-container {
   margin: 0 auto;
   padding: 5px;
-  width: 100% - 15%;
+  width: 100%;
   text-align: center;
-  /*border: 1px solid rgb(0, 38, 255);*/
 }
 
 .title {
   font-size: 24px;
   margin-bottom: 20px;
 }
+
 .search-bar {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   margin: 15px;
-  /*border: 2px solid red;*/
 }
 
 .form-control {
@@ -106,18 +89,6 @@
   margin-bottom: 10px;
   font-size: 16px;
   outline: none;
-  /*border: 1px solid purple;*/
-  /*box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);*/
- 
-}
-
-@keyframes placeholderAnimation {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 1;
-  }
 }
 
 .btn-primary {
@@ -127,8 +98,6 @@
   font-size: 16px;
   width: 200px;
 }
-
-/* Add the rest of your CSS styles for the form-group and resolved-name as needed */
 
 /* Resolved Name */
 .resolved-name {
@@ -151,21 +120,6 @@
 }
 
 /* Search Bar Animation */
-@keyframes placeholder-animation {
-  0% {
-    width: 0;
-    opacity: 0;
-  }
-  50% {
-    width: 100%;
-    opacity: 1;
-  }
-  100% {
-    width: 100%;
-    opacity: 1;
-  }
-}
-
 .form-control::placeholder {
   opacity: 0;
   animation: placeholder-animation 3s infinite;
@@ -186,5 +140,97 @@
   }
 }
 
+/* Media Queries for popular screen sizes */
+/* Large screens (desktops and laptops) */
+@media screen and (min-width: 1200px) {
+  .container {
+    max-width: 800px;
+  }
 
-/* ...existing styles... */
+  .logo {
+    height: 250px;
+  }
+
+  .form-control {
+    width: 500px;
+  }
+
+  .btn-primary {
+    width: 250px;
+  }
+}
+
+/* Medium screens (tablets) */
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+  .container {
+    top: 50px;
+  }
+
+  .logo {
+    height: 150px;
+  }
+
+  .form-control {
+    width: 100%;
+  }
+
+  .btn-primary {
+    width: 100%;
+  }
+}
+
+/* Small screens (smartphones) */
+@media screen and (max-width: 767px) {
+  .container {
+    top: 30px;
+    padding: 10px;
+  }
+
+  .logo {
+    height: 120px;
+  }
+
+  .form-control {
+    width: 100%;
+  }
+
+  .btn-primary {
+    width: 100%;
+    font-size: 14px;
+  }
+
+  .menu ul li {
+    margin-right: 10px;
+  }
+}
+
+/* Extra Small screens (small smartphones) */
+@media screen and (max-width: 480px) {
+  .container {
+    top: 10px;
+    padding: 5px;
+  }
+
+  .logo {
+    height: 100px;
+  }
+
+  .form-control {
+    width: 100%;
+    font-size: 14px;
+  }
+
+  .btn-primary {
+    width: 100%;
+    font-size: 12px;
+  }
+
+  .menu ul li {
+    margin-right: 5px;
+  }
+}
+
+/* Vendor prefixes for cross-browser compatibility */
+/* Note: Modern browsers don't require many vendor prefixes, but some older browsers might. */
+
+
