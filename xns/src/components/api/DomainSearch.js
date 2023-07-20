@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import './DomainSearch.css'; // Import the CSS file for styling
+import './d'; // Import the CSS file for styling
 
 const DomainSearch = () => {
   const [filteredTLDs, setFilteredTLDs] = useState([]);
