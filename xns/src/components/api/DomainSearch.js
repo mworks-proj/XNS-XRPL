@@ -18,10 +18,7 @@ const DomainSearch = () => {
         },
         data: {
           query: searchTerm, // Use the domain name entered by the user for the search
-          search_type: [
-            'available',
-            'registered'
-          ],
+          search_type: ['available', 'registered'],
           tlds: ['com', 'net'],
           idn: true,
           page_size: 25,
@@ -37,12 +34,11 @@ const DomainSearch = () => {
         }
       };
 
-      const response = await axios(options);
+      const response = await axios.request(options);
 
-      const data = response.data;
-      if (Array.isArray(data)) {
+      if (Array.isArray(response.data)) {
         // Extract the domain names from the API response data
-        const domainNames = data.map(item => item.domain);
+        const domainNames = response.data.map(item => item.domain);
         setFilteredTLDs(domainNames); // Update filteredTLDs with the domain names
         setErrorMessage('');
       } else {
