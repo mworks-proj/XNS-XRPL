@@ -20,7 +20,7 @@ const DomainSearch = () => {
         data: {
           query: searchTerm, // Use the domain name entered by the user for the search
           search_type: ['available', 'registered'],
-          tlds: ['.xrpl','com', 'net'],
+          tlds: ['.xrpl','com'],
           idn: true,
           page_size: 25,
           algorithm: 'full',
