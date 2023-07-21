@@ -29,7 +29,6 @@
   width: 100%;
   margin: 5px;
   padding: 5px;
-  background-color: #f8f9fa;
 }
 
 .menu ul {
@@ -173,12 +172,39 @@
   text-align: left;
 }
 .xrp-price-info {
-  display: inline-block;
-  position: relative;
-  margin: 0 auto;
+  
+  display: flex;
   font-size: 17px;
-  width: 100% -15%;
-  overflow-x: scroll;
+  
+}
+.xrp-price-info-container {
+  display: flex;
+  overflow-x: scroll; /* Enable horizontal scroll on smaller screens */
+  gap: 2px; /* Add some space between the XrpPriceInfo elements */
+  
+}
+
+/* Add a media query to adjust the layout on smaller screens */
+@media screen and (max-width: 768px) {
+  .xrp-price-info-container {
+    flex-direction: column;
+    align-items: center;
+    overflow-x: hidden; /* Hide horizontal scroll on smaller screens */
+  }
+
+  .hide{
+    display: none;
+  }
+}
+
+
+/* Add a media query to adjust the layout on smaller screens */
+@media screen and (max-width: 768px) {
+  .xrp-price-info-container {
+    flex-direction: column;
+    align-items: center;
+    overflow-x: auto; /* Hide horizontal scroll on smaller screens */
+  }
 }
 
 

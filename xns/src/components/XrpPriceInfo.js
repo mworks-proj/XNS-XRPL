@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
+
 const XrpPriceInfo = () => {
   const [xrpData, setXrpData] = useState(null);
 
@@ -47,11 +48,19 @@ const XrpPriceInfo = () => {
   const formattedVolume = new Intl.NumberFormat('en-US').format(Number(usd_24h_vol));
 
   return (
-    <div className="xrp-price-info">
-      <span><b>XRP Market Price:</b> <span style={priceStyle}>${formattedPrice}</span> </span>
-      <span><b>24h High:</b> <span style={priceStyle}>${formattedHigh}</span> </span>
-      <span><b>24h % Change:</b> <span style={priceStyle}>{formattedChange}% </span></span>
-      <span><b>Total Volume:</b> <span style={priceStyle}>{formattedVolume}</span></span>
+    <div className="xrp-price-info-container">
+        <div className="xrp-price-info">
+        <span><b>XRP Market Price:</b> <span style={priceStyle}>${formattedPrice}</span> </span>
+        </div>
+        <div className="xrp-price-info hide">
+        <span><b>24h High:</b> <span style={priceStyle}>${formattedHigh}</span> </span>
+        </div>
+        <div className="xrp-price-info hide">
+        <span><b>24h % Change:</b> <span style={priceStyle}>{formattedChange}% </span></span>
+        </div>
+        <div className="xrp-price-info hide">
+        <span><b>Total Volume:</b> <span style={priceStyle}>{formattedVolume}</span></span>
+        </div>
     </div>
   );
 };
