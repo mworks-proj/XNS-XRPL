@@ -21,12 +21,15 @@
 }
 
 .menu {
+  position: fixed;
+  top: 0;
   display: flex;
   justify-content: flex-end;
   align-items: center;
   width: 100%;
+  margin: 5px;
+  padding: 5px;
   background-color: #f8f9fa;
-  padding: 10px;
 }
 
 .menu ul {
