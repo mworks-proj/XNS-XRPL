@@ -58,7 +58,7 @@ const XrpPriceInfo = () => {
         <div className="xrp-price-info hide">
         <span><b>24h % Change:</b> <span style={priceStyle}>{formattedChange}% </span></span>
         </div>
-        <div className="xrp-price-info hide">
+        <div className="xrp-price-info">
         <span><b>Total Volume:</b> <span style={priceStyle}>{formattedVolume}</span></span>
         </div>
     </div>
