@@ -66,7 +66,7 @@ const DomainSearch = () => {
         <input
           type="text"
           className="form-control"
-          placeholder="Search for domain names"
+          placeholder="Search for your .xrpl"
           value={searchTerm}
           onChange={handleInputChange}
         />

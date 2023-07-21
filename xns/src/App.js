@@ -6,6 +6,7 @@ import logo from './xrpl.png';
 import DomainSearch from './components/api/DomainSearch';
 import About from './pages/about';
 import Governance from './pages/gov';
+import XrpPriceInfo from './components/XrpPriceInfo'; // Import the XrpPriceInfo component
 
 const App = () => {
   return (
@@ -38,6 +39,10 @@ const App = () => {
             {/* Add other routes here */}
           </Routes>
         </main>
+        <footer className='footer'>
+          {/* Display the XRP price information in the footer */}
+          <XrpPriceInfo />
+        </footer>
       </div>
     </Router>
   );
