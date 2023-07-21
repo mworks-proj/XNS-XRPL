@@ -24,7 +24,9 @@ const App = () => {
         </header>
         <main>
           <div className="logo-container">
+            <Link to="/home">
             <img src={logo} alt="Logo" className="logo" />
+            </Link>
           </div>
           <div className="search-container">
             <h1 className="title">XRPL Naming Service</h1>
