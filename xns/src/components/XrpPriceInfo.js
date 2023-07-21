@@ -23,7 +23,7 @@ const XrpPriceInfo = () => {
 
     fetchXrpData();
     // Fetch data every 1 minute (adjust as needed)
-    const interval = setInterval(fetchXrpData, 60000);
+    const interval = setInterval(fetchXrpData, 10000);
 
     return () => clearInterval(interval);
   }, []);
