@@ -2,7 +2,7 @@
 .container {
   max-width: 600px;
   position: relative;
-  top: 150px;
+  top: 100px;
   margin: 0 auto;
   padding: 20px;
 }
@@ -17,12 +17,16 @@
   right: 0;
   z-index: 100;
   margin-bottom: 40px;
+  padding: 10px 0;
 }
 
 .menu {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
   background-color: #f8f9fa;
   padding: 10px;
-  width: 100%;
 }
 
 .menu ul {
@@ -30,7 +34,7 @@
   margin: 0;
   padding: 0;
   display: flex;
-  justify-content: flex-end;
+  align-items: center;
 }
 
 .menu ul li {
@@ -51,12 +55,11 @@
 .logo-container {
   display: flex;
   align-items: center;
-  position: relative;
   justify-content: center;
 }
 
 .logo {
-  height: 230px;
+  height: 100px;
   width: auto;
   margin: 10px;
   padding: 20px;
@@ -89,6 +92,12 @@
   margin-bottom: 10px;
   font-size: 16px;
   outline: none;
+  border: 1px solid #007bff;
+}
+
+.form-control:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
 
 .btn-primary {
@@ -97,6 +106,14 @@
   padding: 10px 20px;
   font-size: 16px;
   width: 200px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
 }
 
 /* Resolved Name */
@@ -144,11 +161,12 @@
 /* Large screens (desktops and laptops) */
 @media screen and (min-width: 1200px) {
   .container {
+    top: 100px;
     max-width: 800px;
   }
 
   .logo {
-    height: 250px;
+    height: 150px;
   }
 
   .form-control {
@@ -163,11 +181,11 @@
 /* Medium screens (tablets) */
 @media screen and (min-width: 768px) and (max-width: 1199px) {
   .container {
-    top: 50px;
+    top: 100px;
   }
 
   .logo {
-    height: 150px;
+    height: 120px;
   }
 
   .form-control {
@@ -182,12 +200,12 @@
 /* Small screens (smartphones) */
 @media screen and (max-width: 767px) {
   .container {
-    top: 30px;
+    top: 100px;
     padding: 10px;
   }
 
   .logo {
-    height: 120px;
+    height: 100px;
   }
 
   .form-control {
@@ -207,12 +225,12 @@
 /* Extra Small screens (small smartphones) */
 @media screen and (max-width: 480px) {
   .container {
-    top: 10px;
+    top: 100px;
     padding: 5px;
   }
 
   .logo {
-    height: 100px;
+    height: 80px;
   }
 
   .form-control {
@@ -233,4 +251,4 @@
 /* Vendor prefixes for cross-browser compatibility */
 /* Note: Modern browsers don't require many vendor prefixes, but some older browsers might. */
 
-
+/* Example of vendor prefix for a property */
